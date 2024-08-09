@@ -26,7 +26,7 @@ const fetchData=async()=>{
         setData(response.data.data)
     } catch(error){
             setError(error)
-            alert("There is an error")
+            // alert("There is an error")
     }finally{
         setIsLoading(false)
     }

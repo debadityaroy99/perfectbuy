@@ -16,7 +16,12 @@ const Layout = () => {
   }
 
   return (
-    <Stack >
+<Stack
+      screenOptions={{
+        headerShown: false,  // Hide the header by default
+        headerTitle: "",     // Set the header title to empty string
+      }}
+    >
     </Stack>
   )
 };

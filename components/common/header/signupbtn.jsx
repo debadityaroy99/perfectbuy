@@ -16,10 +16,8 @@ export default function Signupbtn() {
 
 const styles=StyleSheet.create({
     applyBtn: {
-        flex: 1,
         backgroundColor: "#FE7654",
         height: "100%",
-        width:"80px",
         justifyContent: "center",
         alignItems: "center",
         marginLeft: SIZES.large,
@@ -28,7 +26,8 @@ const styles=StyleSheet.create({
       },
       applyBtnText: {
         fontSize: SIZES.medium,
+        padding:5,
         color: COLORS.primary,
-        fontFamily: FONT.bold,
+        fontFamily: FONT.medium,
       }
 })
