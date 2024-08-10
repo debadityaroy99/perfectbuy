@@ -11,7 +11,7 @@ const options = {
   method: 'GET',
   url: `https://jsearch.p.rapidapi.com/${endpoint}`,
    headers: {
-    //'x-rapidapi-key': '65d590d101mshe99c3ff21ef4113p1b6d43jsnac06b85675dc',
+    'x-rapidapi-key': '65d590d101mshe99c3ff21ef4113p1b6d43jsnac06b85675dc',
     'x-rapidapi-host': 'jsearch.p.rapidapi.com'
   },
    params: {...query},

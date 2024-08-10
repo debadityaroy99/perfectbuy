@@ -13,16 +13,18 @@ const styles = StyleSheet.create({
     shadowColor: COLORS.white,
   }),
   logoContainer: (selectedJob, item) => ({
-    width: 50,
-    height: 50,
-    backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
+    width: 130,
+    height: 130,
+    backgroundColor: selectedJob === item ? "#FFF" : COLORS.white,
     borderRadius: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
+    overflow:'hidden',
   }),
   logoImage: {
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
+    objectFit:'cover'
   },
   companyName: {
     fontSize: SIZES.medium,

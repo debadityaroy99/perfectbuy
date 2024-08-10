@@ -12,7 +12,7 @@ const SignUp = () => {
   const [username,setUsername]=useState("")
   const [password,setPassword]=useState("")
   return (
-    <View style={styles.container}>
+    <SafeAreaView >
       <Stack.Screen
       options={{
         headerShown:true,
@@ -22,7 +22,7 @@ const SignUp = () => {
       }}
       />
 
-      <View >
+      <View style={{padding:100}}>
         <Image
         source={icons.twitter}
         style={styles.logo}
@@ -42,7 +42,7 @@ const SignUp = () => {
         </View>
 
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

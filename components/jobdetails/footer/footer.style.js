@@ -5,20 +5,21 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    bottom: 0,
+    bottom:0,
     left: 0,
     right: 0,
     padding: SIZES.small,
-    backgroundColor: "#FFF",
+    backgroundColor: "transparent",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
+    zIndex:1
   },
   likeBtn: {
     width: 55,
     height: 55,
     borderWidth: 1,
-    borderColor: "#F37453",
+    borderColor: "#e6048c",
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
@@ -26,11 +27,11 @@ const styles = StyleSheet.create({
   likeBtnImage: {
     width: "40%",
     height: "40%",
-    tintColor: "#F37453",
+    tintColor: "#e6048c",
   },
   applyBtn: {
     flex: 1,
-    backgroundColor: "#FE7654",
+    backgroundColor: "#e6048c",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
@@ -38,9 +39,10 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
   },
   applyBtnText: {
-    fontSize: SIZES.medium,
+    fontSize: SIZES.large,
     color: COLORS.white,
     fontFamily: FONT.bold,
+    padding:10
   },
 });
 

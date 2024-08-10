@@ -34,10 +34,9 @@ const styles=StyleSheet.create({
         width:"91%",
         height:48,
         marginLeft: SIZES.medium,
-        padding:1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:15
+        marginTop:20
         },
       applyBtnText:{
         fontSize:20,color:"white",fontWeight:'bold'}

@@ -7,14 +7,14 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   userName: {
-    fontFamily: FONT.regular,
+    fontFamily: FONT.medium,
     fontSize: SIZES.large,
-    color: COLORS.secondary,
+    color: 'white',
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: COLORS.primary,
+    color: 'white',
     marginTop: 2,
   },
   searchContainer: {
@@ -22,7 +22,43 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginTop: SIZES.large,
-    height: 50,
+    height: 55,
+    borderRadius:20,
+    padding:10,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 4 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4.65, // Shadow radius (blur radius)
+    elevation: 8, // Elevation for Android shadow
+    backgroundColor: 'white', // Background color of the search container
+    width:380
+  },
+  searchContainer3: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: SIZES.large,
+    height: 70,
+    width:360,
+    borderRadius:100,
+    padding:10,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 4 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4.65, // Shadow radius (blur radius)
+    elevation: 8, // Elevation for Android shadow
+    backgroundColor: 'white', // Background color of the search container
+    margin:10
+  },
+  searchContainer2: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: SIZES.large,
+    height: 70,
+    borderRadius:100,
+    padding:40,
+    margin:20
   },
   searchWrapper2: {
     flex: 1,
@@ -37,7 +73,15 @@ const styles = StyleSheet.create({
   },
   searchWrapper: {
     flex: 1,
-    backgroundColor: COLORS.gray2,
+    backgroundColor:'#e6048c',
+    marginRight: SIZES.small,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: SIZES.medium,
+  },
+  searchWrapper3: {
+    flex: 1,
+    backgroundColor: '#e6048c',
     marginRight: SIZES.small,
     justifyContent: "center",
     alignItems: "center",
@@ -46,6 +90,15 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     fontFamily: FONT.regular,
+    fontSize:SIZES.medium,
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: SIZES.medium,
+    backgroundColor:'white'
+  },
+  searchInput3: {
+    fontFamily: FONT.regular,
+    fontSize:SIZES.large,
     width: "100%",
     height: "100%",
     paddingHorizontal: SIZES.medium,
@@ -63,30 +116,39 @@ const styles = StyleSheet.create({
   searchBtn: {
     width: 50,
     height: "100%",
-    backgroundColor: COLORS.tertiary,
+    backgroundColor: '#e6048c',
     borderRadius: SIZES.medium,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
+  },
+  searchBtn2: {
+    width: 50,
+    height: "100%",
+    backgroundColor: '#f25725',
+    borderRadius: SIZES.medium,
+    justifyContent: "center",
+    alignItems: "center"
   },
   searchBtnImage: {
-    width: "50%",
-    height: "50%",
+    width: "80%",
+    height: "70%",
     tintColor: COLORS.white,
   },
   tabsContainer: {
     width: "100%",
-    marginTop: SIZES.medium,
+    marginTop: SIZES.small,
   },
   tab: (activeJobType, item) => ({
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
     borderRadius: SIZES.medium,
+    backgroundColor:'white',
     borderWidth: 1,
-    borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    borderColor: activeJobType === item ? 'white' : COLORS.gray2,
   }),
   tabText: (activeJobType, item) => ({
     fontFamily: FONT.medium,
-    color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+    color:'black',
   }),
 });
 

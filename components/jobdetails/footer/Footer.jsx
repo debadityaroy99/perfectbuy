@@ -7,19 +7,19 @@ const Footer = ({url}) => {
   console.log(url)
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.likeBtn}>
+      {/* <TouchableOpacity style={styles.likeBtn}>
         <Image
           source={icons.heart}
           resizeMode='contain'
           style={styles.likeBtnImage}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity 
       style={styles.applyBtn}
       onPress={()=>Linking.openURL(url)}
       >
       <Text style={styles.applyBtnText}>
-        Apply Now
+        Scan Product
       </Text>
       </TouchableOpacity>
      

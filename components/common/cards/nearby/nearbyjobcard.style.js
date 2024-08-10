@@ -4,27 +4,28 @@ import { COLORS, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
-    flexDirection: "row",
-    padding: SIZES.medium,
+    padding: 14,
     borderRadius: SIZES.small,
-    backgroundColor: "#FFF",
+    backgroundColor: "#fff9fd",
     ...SHADOWS.medium,
     shadowColor: COLORS.white,
+    height:110
   },
   logoContainer: {
-    width: 50,
-    height: 50,
-    backgroundColor: COLORS.white,
+    width: 100,
+    height: 100,
+    backgroundColor: 'black',
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
+    overflow:"hidden",
   },
   logoImage: {
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
+    objectFit:"fill"
   },
   textContainer: {
     flex: 1,

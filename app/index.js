@@ -1,32 +1,20 @@
-import { View, Text, FlatList, SafeAreaView } from "react-native";
+import { View, Text, FlatList, SafeAreaView, ScrollView } from "react-native";
 import { useEffect, useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { COLORS, SIZES } from "../constants/theme";
 import { icons, images } from "../constants";
-import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components";
-import Signupbtn from "../components/common/header/signupbtn";
+import { Image } from "react-native";
+import styles from "./signup/signupStyle";
 import SplashScreen from "../components/common/splashScreen";
-
-const Home = () => {
+import CustomInput from "./signup/customInput";
+import Button from "./signup/button";
+import Forgot from "./signup/forgot";
+const SignUp = () => {
   const router = useRouter();
-  const [searchTerm, setsearchTerm] = useState("");
   const [isShowSplash,setIsShowSplash]=useState(true)
   // Prepare data for FlatList, you can use an array with each section of content
-  const data = [
-    { key: 'welcome', renderItem: () => (
-      <Welcome
-        searchTerm={searchTerm}
-        setsearchTerm={setsearchTerm}
-        handleClick={() => {
-          if (searchTerm) {
-            router.push(`/search/${searchTerm}`);
-          }
-        }}
-      />
-    )},
-    { key: 'popularjobs', renderItem: () => <Popularjobs /> },
-    { key: 'nearbyjobs', renderItem: () => <Nearbyjobs /> },
-  ];
+  const [username,setUsername]=useState("")
+  const [password,setPassword]=useState("")
 useEffect(()=>{
     setTimeout(()=>{
         setIsShowSplash(false)
@@ -34,36 +22,50 @@ useEffect(()=>{
 })
 
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+
+      <View style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
     {isShowSplash?<SplashScreen/>:
     <View >
+
+    <View style={styles.container}>
       <Stack.Screen
-        options={{
-          headerShown:!isShowSplash,   
-          headerStyle: { backgroundColor: COLORS.lightWhite },
-          headerShadowVisible: false,
-          headerLeft: () => (
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension="100%" />
-          ),
-          headerRight: () => (
-            <View style={{ flexDirection: 'row' }}>
-              <Signupbtn iconUrl={images.profile}  />
-              <ScreenHeaderBtn iconUrl={images.profile} />
-            </View>
-          ),
-          headerTitle: "",
-        }}
+      options={{
+        headerShown:true,
+        headerShadowVisible:false,
+        headerStyle:{backgroundColor:COLORS.lightWhite},
+        headerTitle:"",
+      }}
       />
-      <FlatList
-        data={data}
-        renderItem={({ item }) => item.renderItem()}
-        keyExtractor={(item) => item.key}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ padding: SIZES.medium }}
-      />
+
+      <SafeAreaView style={{marginTop:320}}>
+        <Image
+        source={icons.twitter}
+        style={styles.logo}
+        resizeMode='contain'
+        />
+        <Text style={{marginLeft:150,marginTop:-70,marginBottom:0,fontSize: 18, fontWeight: 'bold',color: '#333'}}>
+          Walmartify
+        </Text>
+        <View style={{marginBottom:190}}>
+        <CustomInput placeholder={'user id'} value={username} setValue={setUsername} secureTextEntry={false}/>
+        <CustomInput placeholder={'password'} value={password} setValue={setPassword} secureTextEntry={true}/>
+        </View>
+       <View style={{padding:10,zIndex:1}}>
+       <Forgot></Forgot>
+       </View>
+        <Button text={"Login"} bgColor={'#0867c7'} fgColor={'white'}></Button>
+        <View style={{marginTop:30}}>
+        <Button text={"Login with google"} bgColor={'#FAE9EA'} fgColor={'#DD4D44'}></Button>
+        <Button text={"Login with facebook"} bgColor={'#E7EAF4'} fgColor={'#4765A9'}></Button>
+        <Button text={"Login with apple"} bgColor={'#e3e3e3'} fgColor={'#363636'}></Button>
+        </View>
+
+      </SafeAreaView>
+    </View>
     </View>}
     </View>
+
   );
 };
 
-export default Home;
+export default SignUp;

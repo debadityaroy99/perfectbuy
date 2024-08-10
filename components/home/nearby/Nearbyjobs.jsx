@@ -8,40 +8,51 @@ import useFetch from '../../../hook/useFetch'
 
 const NearbyJobs = () => {
   const router=useRouter()
-  const {data,isLoading,error}=useFetch('search',{
-    query: 'Node.js developer in New-York,USA',
-    page: '1',
-    num_pages: '1',
-    date_posted: 'all'
-  })
+  const data=['https://images-eu.ssl-images-amazon.com/images/I/61jBnY6paeL._AC_UL165_SR165,165_.jpg','https://images-eu.ssl-images-amazon.com/images/I/71XRgDNXulL._AC_UL100_SR100,100_.jpg',
+    'https://images-eu.ssl-images-amazon.com/images/I/81uJyMRONOL._AC_UL100_SR100,100_.jpg','https://m.media-amazon.com/images/I/71BsckBgy3L._AC_SY200_.jpg',
+    'https://images-eu.ssl-images-amazon.com/images/I/71D3hzqn5rL._AC_UL100_SR100,100_.jpg','https://images-eu.ssl-images-amazon.com/images/I/51rgGjt-lnL._AC_UL100_SR100,100_.jpg',
+  'https://m.media-amazon.com/images/I/51ebZJ+DR4L._AC_UL480_FMwebp_QL65_.jpg','https://m.media-amazon.com/images/I/61fOvDZeE3S._AC_UL480_FMwebp_QL65_.jpg','https://m.media-amazon.com/images/I/719N9z702GL._AC_SY200_.jpg']
+  // const {data,isLoading,error}=useFetch('search',{
+  //   query: 'Node.js developer in New-York,USA',
+  //   page: '1',
+  //   num_pages: '1',
+  //   date_posted: 'all'
+  // })
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Nearby Jobs</Text>
+        <Text style={styles.headerTitle}>Store favourites</Text>
       <TouchableOpacity>
         <Text style={styles.headerBtn}>Show All</Text>
       </TouchableOpacity>
     </View>
+            <View style={{
+        height: 1, // Thickness of the line
+        backgroundColor: COLORS.gray, // Color of the line
+        width: '100%', // Full width of the screen
+        marginVertical: 3, // Optional: add space around the line
+        }}/>
     <View style={styles.cardsContainer}>
-        {isLoading ? (
-          <ActivityIndicator size="large" colos={COLORS.primary}/>
-        ):error?(
-          <Text>Something went wrong</Text>
-        ):(
+
           <FlatList 
           data={data}
           renderItem={({item})=>(
             <NearbyJobCard
             item={item}
-            handleNavigate={()=>router.push(`/job-details/${item.job_id}`)}
+            handleNavigate={()=>{}}
             />
           )}
-          keyExtractor={item=>item?.job_id}
+          keyExtractor={item=>item}
           contentContainerStyle={{columnGap:SIZES.medium}}
-          vertical
+          numColumns={3}
           />
-        )}
     </View>
+    {/* <View style={{
+    height: 1, // Thickness of the line
+    backgroundColor: COLORS.gray, // Color of the line
+    width: '100%', // Full width of the screen
+    marginVertical: -7, // Optional: add space around the line
+    }}/> */}
     </View>
   )
 }
