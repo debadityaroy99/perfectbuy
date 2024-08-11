@@ -3,8 +3,9 @@ import { View, Text,TouchableOpacity,Image,Linking } from 'react-native'
 
 import styles from './footer.style'
 import { icons } from '../../../constants'
+import { useRouter } from 'expo-router'
 const Footer = ({url}) => {
-  console.log(url)
+  const router=useRouter()
   return (
     <View style={styles.container}>
       {/* <TouchableOpacity style={styles.likeBtn}>
@@ -16,7 +17,7 @@ const Footer = ({url}) => {
       </TouchableOpacity> */}
       <TouchableOpacity 
       style={styles.applyBtn}
-      onPress={()=>Linking.openURL(url)}
+      onPress={()=>router.push('/barcode-scanner/scanner')}
       >
       <Text style={styles.applyBtnText}>
         Scan Product

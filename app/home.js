@@ -48,10 +48,10 @@ const Home = () => {
                     marginRight:17,
                     marginTop:4
                 }}>Kurnool</Text>
-                      <View style={{}}>
+                      {/* <View style={{}}>
                       <Image source={{uri:icons.location}} style={{ width: 24,
                   height: 24,marginRight:20}}/>
-                      </View>
+                      </View> */}
                 </View>
 
               <ScreenHeaderBtn iconUrl={images.profile} />

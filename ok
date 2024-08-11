@@ -1,0 +1,296 @@
+warning: in the working copy of 'components/jobdetails/footer/Footer.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'expo-env.d.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/app/home.js b/app/home.js[m
+[1mindex 65e0083..0ce6628 100644[m
+[1m--- a/app/home.js[m
+[1m+++ b/app/home.js[m
+[36m@@ -48,10 +48,10 @@[m [mconst Home = () => {[m
+                     marginRight:17,[m
+                     marginTop:4[m
+                 }}>Kurnool</Text>[m
+[31m-                      <View style={{}}>[m
+[32m+[m[32m                      {/* <View style={{}}>[m
+                       <Image source={{uri:icons.location}} style={{ width: 24,[m
+                   height: 24,marginRight:20}}/>[m
+[31m-                      </View>[m
+[32m+[m[32m                      </View> */}[m
+                 </View>[m
+ [m
+               <ScreenHeaderBtn iconUrl={images.profile} />[m
+[1mdiff --git a/app/product/product.js b/app/product/product.js[m
+[1mindex 633740c..4032b93 100644[m
+[1m--- a/app/product/product.js[m
+[1m+++ b/app/product/product.js[m
+[36m@@ -1,7 +1,7 @@[m
+ import React from 'react';[m
+ import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';[m
+ import { SIZES,COLORS } from '../../constants';[m
+[31m-import { Stack, useRouter } from 'expo-router';[m
+[32m+[m[32mimport { router, Stack, useRouter } from 'expo-router';[m
+ import { ScreenHeaderBtn } from '../../components';[m
+ // import icons from '../../constants';[m
+ import icons from '../../constants/icons'[m
+[36m@@ -40,8 +40,9 @@[m [mconst products = [[m
+ [m
+ // Product Card Component[m
+ const ProductCard = ({ product }) => {[m
+[32m+[m[32m    const router=useRouter()[m
+   return ([m
+[31m-    <TouchableOpacity style={styles.cardContainer}>[m
+[32m+[m[32m    <TouchableOpacity style={styles.cardContainer} onPress={()=>router.push('/product-details/id')}>[m
+       <View style={styles.imageContainer}>[m
+         <Image source={{ uri: product.image }} style={styles.productImage} />[m
+       </View>[m
+[36m@@ -67,14 +68,19 @@[m [mconst ProductList = () => {[m
+         options={{[m
+             headerBackVisible:true,[m
+             headerShown:true,[m
+[31m-            headerLeft:()=>([m
+[31m-                <ScreenHeaderBtn[m
+[31m-                iconUrl={icons.left}[m
+[31m-                dimension="20%"[m
+[31m-                handlePress={()=>router.back()}[m
+[31m-                />[m
+[31m-              ),[m
+[31m-              headerStyle:{backgroundColor:'#fe5bbe'}[m
+[32m+[m[32m            // headerLeft:()=>([m
+[32m+[m[32m            //     <ScreenHeaderBtn[m
+[32m+[m[32m            //     iconUrl={icons.left}[m
+[32m+[m[32m            //     dimension="20%"[m
+[32m+[m[32m            //     handlePress={()=>router.back()}[m
+[32m+[m[32m            //     />[m
+[32m+[m[32m            //   ),[m
+[32m+[m[32m              headerStyle:{backgroundColor:'#fe5bbe'},[m
+[32m+[m[32m              headerTitle:"soap",[m
+[32m+[m[32m              headerTitleStyle:{[m
+[32m+[m[32m                color:'white',[m
+[32m+[m[32m                fontSize:25[m
+[32m+[m[32m              }[m
+ [m
+         }}[m
+         />[m
+[1mdiff --git a/components/jobdetails/footer/Footer.jsx b/components/jobdetails/footer/Footer.jsx[m
+[1mindex 83a9da5..eef6d5d 100644[m
+[1m--- a/components/jobdetails/footer/Footer.jsx[m
+[1m+++ b/components/jobdetails/footer/Footer.jsx[m
+[36m@@ -3,8 +3,9 @@[m [mimport { View, Text,TouchableOpacity,Image,Linking } from 'react-native'[m
+ [m
+ import styles from './footer.style'[m
+ import { icons } from '../../../constants'[m
+[32m+[m[32mimport { useRouter } from 'expo-router'[m
+ const Footer = ({url}) => {[m
+[31m-  console.log(url)[m
+[32m+[m[32m  const router=useRouter()[m
+   return ([m
+     <View style={styles.container}>[m
+       {/* <TouchableOpacity style={styles.likeBtn}>[m
+[36m@@ -16,7 +17,7 @@[m [mconst Footer = ({url}) => {[m
+       </TouchableOpacity> */}[m
+       <TouchableOpacity [m
+       style={styles.applyBtn}[m
+[31m-      onPress={()=>Linking.openURL(url)}[m
+[32m+[m[32m      onPress={()=>router.push('/barcode-scanner/scanner')}[m
+       >[m
+       <Text style={styles.applyBtnText}>[m
+         Scan Product[m
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex ceaf11f..e25eda5 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -13,6 +13,8 @@[m
+         "axios": "^1.7.2",[m
+         "expo": "~51.0.24",[m
+         "expo-app-loading": "^1.0.3",[m
+[32m+[m[32m        "expo-barcode-scanner": "~13.0.1",[m
+[32m+[m[32m        "expo-camera": "~15.0.14",[m
+         "expo-constants": "~16.0.2",[m
+         "expo-font": "~12.0.9",[m
+         "expo-google-fonts": "^0.0.0",[m
+[36m@@ -26,9 +28,11 @@[m
+         "react": "18.2.0",[m
+         "react-dom": "18.2.0",[m
+         "react-native": "0.74.3",[m
+[32m+[m[32m        "react-native-camera": "^4.2.1",[m
+         "react-native-dotenv": "^3.4.11",[m
+         "react-native-gesture-handler": "~2.16.1",[m
+         "react-native-linear-gradient": "^2.8.3",[m
+[32m+[m[32m        "react-native-qrcode-scanner": "^1.5.5",[m
+         "react-native-reanimated": "~3.10.1",[m
+         "react-native-safe-area-context": "4.10.5",[m
+         "react-native-screens": "3.31.1",[m
+[36m@@ -4327,6 +4331,17 @@[m
+         "react": "^16.8 || ^17.0 || ^18.0"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/@react-native-async-storage/async-storage": {[m
+[32m+[m[32m      "version": "1.24.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.24.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-W4/vbwUOYOjco0x3toB8QCr7EjIP6nE9G7o8PMguvvjYT5Awg09lyV4enACRx4s++PPulBiBSjL0KTFx2u0Z/g==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "merge-options": "^3.0.4"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "react-native": "^0.0.0-0 || >=0.60 <1.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/@react-native-community/cli": {[m
+       "version": "13.6.9",[m
+       "resolved": "https://registry.npmjs.org/@react-native-community/cli/-/cli-13.6.9.tgz",[m
+[36m@@ -9266,6 +9281,28 @@[m
+         "expo": "*"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/expo-barcode-scanner": {[m
+[32m+[m[32m      "version": "13.0.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/expo-barcode-scanner/-/expo-barcode-scanner-13.0.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-xBGLT1An2gpAMIQRTLU3oHydKohX8r8F9/ait1Fk9Vgd0GraFZbP4IiT7nHMlaw4H6E7Muucf7vXpGV6u7d4HQ==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "expo-image-loader": "~4.7.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "expo": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/expo-camera": {[m
+[32m+[m[32m      "version": "15.0.14",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/expo-camera/-/expo-camera-15.0.14.tgz",[m
+[32m+[m[32m      "integrity": "sha512-O4uvVywGsQ3a89d0BX4lq6mDuGYGukx1PYY4QrC9zw1yzD2W9BVTl8lanFRPC5h4PRniekfeWUVH1a0jJmkLIw==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "invariant": "^2.2.4"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "expo": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/expo-constants": {[m
+       "version": "16.0.2",[m
+       "resolved": "https://registry.npmjs.org/expo-constants/-/expo-constants-16.0.2.tgz",[m
+[36m@@ -9302,6 +9339,14 @@[m
+       "resolved": "https://registry.npmjs.org/expo-google-fonts/-/expo-google-fonts-0.0.0.tgz",[m
+       "integrity": "sha512-SpY1N5ZHGbNXuvN8s3E2HxjlcxR5NHWn72Uy8wl0uZJ0ueWd+JfTUXwZzfuF638WeTdgJKztRy2MWfuMORQ1yQ=="[m
+     },[m
+[32m+[m[32m    "node_modules/expo-image-loader": {[m
+[32m+[m[32m      "version": "4.7.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/expo-image-loader/-/expo-image-loader-4.7.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-cx+MxxsAMGl9AiWnQUzrkJMJH4eNOGlu7XkLGnAXSJrRoIiciGaKqzeaD326IyCTV+Z1fXvIliSgNW+DscvD8g==",[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "expo": "*"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/expo-keep-awake": {[m
+       "version": "13.0.2",[m
+       "resolved": "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-13.0.2.tgz",[m
+[36m@@ -10927,6 +10972,14 @@[m
+         "node": ">=8"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/is-plain-obj": {[m
+[32m+[m[32m      "version": "2.1.0",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-2.1.0.tgz",[m
+[32m+[m[32m      "integrity": "sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==",[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=8"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/is-plain-object": {[m
+       "version": "2.0.4",[m
+       "resolved": "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz",[m
+[36m@@ -13976,6 +14029,17 @@[m
+       "resolved": "https://registry.npmjs.org/memory-cache/-/memory-cache-0.2.0.tgz",[m
+       "integrity": "sha512-OcjA+jzjOYzKmKS6IQVALHLVz+rNTMPoJvCztFaZxwG14wtAW7VRZjwTQu06vKCYOxh4jVnik7ya0SXTB0W+xA=="[m
+     },[m
+[32m+[m[32m    "node_modules/merge-options": {[m
+[32m+[m[32m      "version": "3.0.4",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/merge-options/-/merge-options-3.0.4.tgz",[m
+[32m+[m[32m      "integrity": "sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "is-plain-obj": "^2.1.0"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "engines": {[m
+[32m+[m[32m        "node": ">=10"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/merge-stream": {[m
+       "version": "2.0.0",[m
+       "resolved": "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz",[m
+[36m@@ -15781,6 +15845,14 @@[m
+         }[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/react-native-camera": {[m
+[32m+[m[32m      "version": "4.2.1",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-native-camera/-/react-native-camera-4.2.1.tgz",[m
+[32m+[m[32m      "integrity": "sha512-+Vkql24PFYQfsPRznJCvPwJQfyzCnjlcww/iZ4Ej80bgivKjL9eU0IMQIXp4yi6XCrKi4voWXxIDPMupQZKeIQ==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "prop-types": "^15.6.2"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/react-native-dotenv": {[m
+       "version": "3.4.11",[m
+       "resolved": "https://registry.npmjs.org/react-native-dotenv/-/react-native-dotenv-3.4.11.tgz",[m
+[36m@@ -15830,6 +15902,32 @@[m
+         "react-native": "*"[m
+       }[m
+     },[m
+[32m+[m[32m    "node_modules/react-native-permissions": {[m
+[32m+[m[32m      "version": "2.2.2",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-native-permissions/-/react-native-permissions-2.2.2.tgz",[m
+[32m+[m[32m      "integrity": "sha512-ihf4shQDSX5Oo9ChQXb9kr13mmyyNem5MaEvOpr3dCjhBOBWyEMztXm9/uPK1Qg5PsNpaYLa1KpcPZDCw87LXg==",[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "react": ">=16.8.6",[m
+[32m+[m[32m        "react-native": ">=0.60.0"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+[32m+[m[32m    "node_modules/react-native-qrcode-scanner": {[m
+[32m+[m[32m      "version": "1.5.5",[m
+[32m+[m[32m      "resolved": "https://registry.npmjs.org/react-native-qrcode-scanner/-/react-native-qrcode-scanner-1.5.5.tgz",[m
+[32m+[m[32m      "integrity": "sha512-il79uStkFqUvofqXJQfOL30qgQyU17MUKxj7IGHv6oT2OxIY/vutTwuPPDbsivtv0yTMHP4dGx/79oys4eAuNw==",[m
+[32m+[m[32m      "dependencies": {[m
+[32m+[m[32m        "@react-native-async-storage/async-storage": "^1.13.4",[m
+[32m+[m[32m        "prop-types": "^15.5.10",[m
+[32m+[m[32m        "react-native-permissions": "^2.0.2"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "funding": {[m
+[32m+[m[32m        "type": "opencollective",[m
+[32m+[m[32m        "url": "https://opencollective.com/react-native-qrcode-scanner"[m
+[32m+[m[32m      },[m
+[32m+[m[32m      "peerDependencies": {[m
+[32m+[m[32m        "react-native-camera": ">=1.0.2"[m
+[32m+[m[32m      }[m
+[32m+[m[32m    },[m
+     "node_modules/react-native-reanimated": {[m
+       "version": "3.10.1",[m
+       "resolved": "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-3.10.1.tgz",[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 3f559a0..556891a 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -23,6 +23,7 @@[m
+     "expo-constants": "~16.0.2",[m
+     "expo-font": "~12.0.9",[m
+     "expo-google-fonts": "^0.0.0",[m
+[32m+[m[32m    "expo-linear-gradient": "~13.0.2",[m
+     "expo-linking": "~6.3.1",[m
+     "expo-router": "~3.5.20",[m
+     "expo-splash-screen": "~0.27.5",[m
+[36m@@ -32,14 +33,17 @@[m
+     "react": "18.2.0",[m
+     "react-dom": "18.2.0",[m
+     "react-native": "0.74.3",[m
+[32m+[m[32m    "react-native-camera": "^4.2.1",[m
+     "react-native-dotenv": "^3.4.11",[m
+     "react-native-gesture-handler": "~2.16.1",[m
+     "react-native-linear-gradient": "^2.8.3",[m
+[32m+[m[32m    "react-native-qrcode-scanner": "^1.5.5",[m
+     "react-native-reanimated": "~3.10.1",[m
+     "react-native-safe-area-context": "4.10.5",[m
+     "react-native-screens": "3.31.1",[m
+     "react-native-web": "~0.19.10",[m
+[31m-    "expo-linear-gradient": "~13.0.2"[m
+[32m+[m[32m    "expo-barcode-scanner": "~13.0.1",[m
+[32m+[m[32m    "expo-camera": "~15.0.14"[m
+   },[m
+   "devDependencies": {[m
+     "@babel/core": "^7.20.0",[m

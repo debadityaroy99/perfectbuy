@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { SIZES,COLORS } from '../../constants';
-import { Stack, useRouter } from 'expo-router';
+import { router, Stack, useRouter } from 'expo-router';
 import { ScreenHeaderBtn } from '../../components';
 // import icons from '../../constants';
 import icons from '../../constants/icons'
@@ -40,8 +40,9 @@ const products = [
 
 // Product Card Component
 const ProductCard = ({ product }) => {
+    const router=useRouter()
   return (
-    <TouchableOpacity style={styles.cardContainer}>
+    <TouchableOpacity style={styles.cardContainer} onPress={()=>router.push('/product-details/id')}>
       <View style={styles.imageContainer}>
         <Image source={{ uri: product.image }} style={styles.productImage} />
       </View>
@@ -67,14 +68,19 @@ const ProductList = () => {
         options={{
             headerBackVisible:true,
             headerShown:true,
-            headerLeft:()=>(
-                <ScreenHeaderBtn
-                iconUrl={icons.left}
-                dimension="20%"
-                handlePress={()=>router.back()}
-                />
-              ),
-              headerStyle:{backgroundColor:'#fe5bbe'}
+            // headerLeft:()=>(
+            //     <ScreenHeaderBtn
+            //     iconUrl={icons.left}
+            //     dimension="20%"
+            //     handlePress={()=>router.back()}
+            //     />
+            //   ),
+              headerStyle:{backgroundColor:'#fe5bbe'},
+              headerTitle:"soap",
+              headerTitleStyle:{
+                color:'white',
+                fontSize:25
+              }
 
         }}
         />
