@@ -30,7 +30,7 @@ const Home = () => {
   ];
 
   return (
-    <LinearGradient colors={['#fe5bbe', '#fef4fa','#fff9fd','#ffffff']} style={{ height: "100%",flex:1 }}>
+    <LinearGradient colors={['#0071ce', '#fef4fa','#fff9fd','#ffffff']} style={{ height: "100%",flex:1 }}>
         <Stack.Screen
         options={{
           headerShown:true,   
@@ -54,12 +54,12 @@ const Home = () => {
                       </View> */}
                 </View>
 
-              <ScreenHeaderBtn iconUrl={images.profile} />
+              <ScreenHeaderBtn iconUrl={icons.cart} />
               
             </View>
           ),
           headerTitle: "",
-          headerStyle:{backgroundColor:'#ff59bd'}
+          headerStyle:{backgroundColor:'#0071ce'}
         }}
       />
       
@@ -76,7 +76,7 @@ const Home = () => {
         //   </View>
         // }
       />
-      <Footer url={ 'https://careers.google.com/jobs/results/'} />
+      <Footer  />
     </LinearGradient>
   );
 };

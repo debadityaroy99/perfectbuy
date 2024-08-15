@@ -19,7 +19,7 @@ const Popularjobs = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Offers</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>router.push('/storeSide')}>
         <Text style={styles.headerBtn}>Show All</Text>
       </TouchableOpacity>
     </View>

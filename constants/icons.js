@@ -10,6 +10,7 @@ import chevronLeft from '../assets/icons/chevron-left.png'
 import chevronRight from '../assets/icons/chevron-right.png'
 import twitter from '../assets/icons/twitter.png'
 import background from '../assets/icons/background.jpeg'
+import cart from '../assets/icons/cart-Photoroom.png'
 export default {
   heart,
   menu,
@@ -22,5 +23,6 @@ export default {
   chevronLeft,
   chevronRight,
   twitter,
-  background
+  background,
+  cart
 };

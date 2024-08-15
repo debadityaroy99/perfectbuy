@@ -111,12 +111,12 @@ const styles = StyleSheet.create({
     borderRadius:10,
     backgroundColor:'white',
     width: 350,
-    paddingHorizontal:140
+    paddingHorizontal:120
   },
   searchBtn: {
     width: 50,
     height: "100%",
-    backgroundColor: '#e6048c',
+    backgroundColor: 'rgb(37, 150, 190)',
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center"
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   searchBtn2: {
     width: 50,
     height: "100%",
-    backgroundColor: '#f25725',
+    backgroundColor: '#0071ce',
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center"

@@ -8,10 +8,7 @@ import useFetch from '../../../hook/useFetch'
 
 const NearbyJobs = () => {
   const router=useRouter()
-  const data=['https://images-eu.ssl-images-amazon.com/images/I/61jBnY6paeL._AC_UL165_SR165,165_.jpg','https://images-eu.ssl-images-amazon.com/images/I/71XRgDNXulL._AC_UL100_SR100,100_.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/I/81uJyMRONOL._AC_UL100_SR100,100_.jpg','https://m.media-amazon.com/images/I/71BsckBgy3L._AC_SY200_.jpg',
-    'https://images-eu.ssl-images-amazon.com/images/I/71D3hzqn5rL._AC_UL100_SR100,100_.jpg','https://images-eu.ssl-images-amazon.com/images/I/51rgGjt-lnL._AC_UL100_SR100,100_.jpg',
-  'https://m.media-amazon.com/images/I/51ebZJ+DR4L._AC_UL480_FMwebp_QL65_.jpg','https://m.media-amazon.com/images/I/61fOvDZeE3S._AC_UL480_FMwebp_QL65_.jpg','https://m.media-amazon.com/images/I/719N9z702GL._AC_SY200_.jpg']
+  const data=['https://m.media-amazon.com/images/I/51waOv47fqL._SL1000_.jpg', 'https://m.media-amazon.com/images/I/51EOXCdx+mL._SY575_.jpg','https://m.media-amazon.com/images/I/711R5bfqkHL._SX569_.jpg','https://m.media-amazon.com/images/I/41gsvUhd5XL._SL1000_.jpg','https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg','https://m.media-amazon.com/images/I/51BPKDZpJzL._SX425_.jpg','https://m.media-amazon.com/images/I/6160m6Vo1PL._SX522_.jpg','https://m.media-amazon.com/images/I/41fCDR6pjpL._SX300_SY300_QL70_FMwebp_.jpg','https://m.media-amazon.com/images/I/61MQfvYxpiL._SX425_.jpg','https://m.media-amazon.com/images/I/617WKc6k04L._SX569_.jpg','https://m.media-amazon.com/images/I/31cvz9g0EPL.jpg','https://m.media-amazon.com/images/I/41KwKTpO9EL._SX569_.jpg','https://m.media-amazon.com/images/I/51kyY5T0nKL._SX679_.jpg','https://m.media-amazon.com/images/I/61RJn0ofUsL._SX679_.jpg','https://m.media-amazon.com/images/I/71uGU7evScL._SX522_.jpg']
   // const {data,isLoading,error}=useFetch('search',{
   //   query: 'Node.js developer in New-York,USA',
   //   page: '1',
@@ -21,7 +18,7 @@ const NearbyJobs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Store favourites</Text>
+        <Text style={styles.headerTitle}>Based previous purchases</Text>
       <TouchableOpacity>
         <Text style={styles.headerBtn}>Show All</Text>
       </TouchableOpacity>

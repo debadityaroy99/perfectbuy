@@ -15,7 +15,7 @@ const loginSuccess = () => {
     setTimeout(() => {
       setIsLoading(false);
       setShowBox(true);
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -51,10 +51,10 @@ const loginSuccess = () => {
 
       <Text
         style={{
-          marginTop: -49,
+          marginTop: -43,
           fontSize: 67,
           fontWeight: 800,
-          color: '#f25725',
+          color: '#0071ce',
           textAlign: 'center',
           textShadowOffset: { width: 4, height: 2 }, // Offset for shadow
           textShadowRadius: 5, // Blur radius for shadow
@@ -86,7 +86,7 @@ const loginSuccess = () => {
         </View>
 
         <TouchableOpacity>
-          <Text style={{ color: '#f25725', marginTop: 3, fontWeight: 'bold', fontSize: 15, marginLeft: 240 }}>
+          <Text style={{ color: '#0071ce', marginTop: 3, fontWeight: 'bold', fontSize: 15, marginLeft: 240 }}>
             Find my location
           </Text>
         </TouchableOpacity>
@@ -126,7 +126,7 @@ const loginSuccess = () => {
                 source={{ uri: 'https://etimg.etb2bimg.com/photo/72472379.cms' }}
               />
             </TouchableOpacity>
-            <Text style={{ color: '#333', fontSize: 18, marginTop: 5,marginLeft:16,fontWeight:'medium' }}>Kurnool Walmart</Text>
+            <Text style={{ color: '#333', fontSize: 18, marginTop: 5,marginLeft:16,fontWeight:'medium' }}>Kurnool Store</Text>
           </View>
         ) : (
           <View />

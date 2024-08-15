@@ -5,10 +5,11 @@ const styles=StyleSheet.create({
         alignItems:'center'
     },
     logo:{
-        marginLeft:154,
-        marginTop:-320,
-        marginBottom:60,
-        padding:50
+        alignSelf:'center',
+        marginTop:-900,
+        marginBottom:-530,
+        padding:50,
+        width:50
     },
     container:{
         backgroundColor:'#F9FBFC',

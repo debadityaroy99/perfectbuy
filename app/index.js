@@ -11,15 +11,15 @@ import Button from "./signup/button";
 import Forgot from "./signup/forgot";
 const SignUp = () => {
   const router = useRouter();
-  const [isShowSplash,setIsShowSplash]=useState(true)
+  const [isShowSplash,setIsShowSplash]=useState(false)
   // Prepare data for FlatList, you can use an array with each section of content
   const [username,setUsername]=useState("")
   const [password,setPassword]=useState("")
-useEffect(()=>{
-    setTimeout(()=>{
-        setIsShowSplash(false)
-    },3000)
-})
+// useEffect(()=>{
+//     setTimeout(()=>{
+//         setIsShowSplash(false)
+//     },3000)
+// })
 
   return (
 
@@ -39,15 +39,16 @@ useEffect(()=>{
 
       <SafeAreaView style={{marginTop:320}}>
         <Image
-        source={icons.twitter}
+        source={images.logo
+        }
         style={styles.logo}
         resizeMode='contain'
         />
-        <Text style={{marginLeft:150,marginTop:-70,marginBottom:0,fontSize: 18, fontWeight: 'bold',color: '#333'}}>
-          Walmartify
+        <Text style={{alignSelf:'center',marginTop:-70,marginBottom:0,fontSize: 18, fontWeight: 'bold',color: '#333'}}>
+          ShopSync
         </Text>
         <View style={{marginBottom:190}}>
-        <CustomInput placeholder={'user id'} value={username} setValue={setUsername} secureTextEntry={false}/>
+        <CustomInput placeholder={'Phone Number'} value={username} setValue={setUsername} secureTextEntry={false}/>
         <CustomInput placeholder={'password'} value={password} setValue={setPassword} secureTextEntry={true}/>
         </View>
        <View style={{padding:10,zIndex:1}}>

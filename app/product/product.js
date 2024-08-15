@@ -9,31 +9,59 @@ import icons from '../../constants/icons'
 const products = [
   {
     id: '1',
-    image: 'https://m.media-amazon.com/images/I/61S-emDWj9L._AC_UL480_FMwebp_QL65_.jpg',
-    title: 'Sample Product 1',
-    price: '29.99',
+    image: 'https://m.media-amazon.com/images/I/41lQuD3zXhL._SY445_SX342_QL70_FMwebp_.jpg',
+    title: 'Apple iPhone 15 Pro (128 GB)',
+    price: '1524.44',
     rating: '4.5',
   },
   {
     id: '2',
-    image: 'https://m.media-amazon.com/images/I/510WNJ0CxTL._AC_UL480_FMwebp_QL65_.jpg',
-    title: 'Sample Product 2',
-    price: '19.99',
-    rating: '4.2',
+    image: 'https://m.media-amazon.com/images/I/4193g0Lz6aL._SX300_SY300_QL70_FMwebp_.jpg',
+    title: 'Samsung Galaxy S24 Ultra 5G AI Smartphone',
+    price: '1548.26',
+    rating: '4.9',
   },
   {
     id: '3',
-    image: 'https://m.media-amazon.com/images/I/718GVZSwS5L._AC_UL480_FMwebp_QL65_.jpg',
-    title: 'Sample Product 3',
-    price: '49.99',
+    image: 'https://m.media-amazon.com/images/I/71o8VehMHXL._SY450_.jpg',
+    title: 'OnePlus 12 (Silky Black, 16GB RAM, 512GB Storage)',
+    price: '775.12',
     rating: '4.8',
   },
   {
     id: '4',
-    image: 'https://m.media-amazon.com/images/I/718GVZSwS5L._AC_UL480_FMwebp_QL65_.jpg',
-    title: 'Sample Product 3',
-    price: '49.99',
-    rating: '4.8',
+    image: 'https://m.media-amazon.com/images/I/41qtPl1QeHL._SX300_SY300_QL70_FMwebp_.jpg',
+    title: 'Motorola Edge 50 Pro 5G with 125W Charger (Luxe Lavender, 256 GB)',
+    price: '316.84',
+    rating: '4.6',
+  },
+  {
+    id: '5',
+    image: 'https://m.media-amazon.com/images/I/71aiqeP-APL._SX569_.jpg',
+    title: 'Redmi Note 13 Pro (Coral Purple, 8GB RAM, 128GB Storage)',
+    price: '297.84',
+    rating: '4.5',
+  },
+  {
+    id: '6',
+    image: 'https://m.media-amazon.com/images/I/61Id6WJDWqL._SX569_.jpg',
+    title: 'iQOO Z7 Pro 5G (Blue Lagoon, 8GB RAM, 256GB Storage) ',
+    price: '295.87',
+    rating: '4.3',
+  },
+  {
+    id: '7',
+    image: 'https://m.media-amazon.com/images/I/61G-KeNnaFL._SX569_.jpg',
+    title: 'Motorola razr 50 ultra (Spring Green, 12GB RAM, 512GB Storage)',
+    price: '131.42',
+    rating: '4.5',
+  },
+  {
+    id: '8',
+    image: 'https://m.media-amazon.com/images/I/61lhB3uQT3L._SX569_.jpg',
+    title: 'Lava Blaze X 5G - Starlight Purple (4GB RAM | 128GB Storage)',
+    price: '178.65',
+    rating: '4.0',
   },
   // Add more products as needed
 ];
@@ -75,8 +103,8 @@ const ProductList = () => {
             //     handlePress={()=>router.back()}
             //     />
             //   ),
-              headerStyle:{backgroundColor:'#fe5bbe'},
-              headerTitle:"soap",
+              headerStyle:{backgroundColor:'#0071ce'},
+              headerTitle:"phones",
               headerTitleStyle:{
                 color:'white',
                 fontSize:25

@@ -29,7 +29,7 @@ const SignUp = () => {
         resizeMode='contain'
         />
         <Text style={{marginLeft:140,marginTop:16,marginBottom:-30,fontSize:20}}>
-          Walmartify
+          ShopSync
         </Text>
         <CustomInput placeholder={'user id'} value={username} setValue={setUsername} secureTextEntry={false}/>
         <CustomInput placeholder={'password'} value={password} setValue={setPassword} secureTextEntry={true}/>

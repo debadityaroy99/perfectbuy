@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-
+import { images } from '../../constants';
+import { Image } from 'react-native';
 const SplashScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Walmartify</Text>
+      <Image source={images.logo} style={{width:140,height:140}}/>
+      <Text style={styles.text}>ShopSync</Text>
     </View>
   );
 };
@@ -21,6 +23,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',            // Set the font weight
     color: '#333',                 // Set the text color
   },
-});
-
+});4
 export default SplashScreen;
