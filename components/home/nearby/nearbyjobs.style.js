@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: SIZES.large,
     fontFamily: FONT.medium,
+    fontWeight: 'bold',
     color: COLORS.primary,
   },
   title: {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
   },
   cardsContainer: {
-    marginTop: SIZES.medium,
+    marginTop: SIZES.large,
     gap: SIZES.small,
   },
 });

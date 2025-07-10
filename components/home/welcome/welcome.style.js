@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
   userName: {
     fontFamily: FONT.medium,
     fontSize: SIZES.large,
-    color: 'white',
+    color: 'black',
   },
   welcomeMessage: {
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
-    color: 'white',
+    color: 'black',
     marginTop: 2,
   },
   searchContainer: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   searchBtn: {
     width: 50,
     height: "100%",
-    backgroundColor: 'rgb(37, 150, 190)',
+    backgroundColor: '#0071ce',
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center"

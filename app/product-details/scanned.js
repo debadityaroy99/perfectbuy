@@ -10,12 +10,12 @@ const ProductDetails = () => {
     const [status, setStatus] = useState(false);
     const [botStatus, setBotStatus] = useState(false);
   const product = {
-    name: "Apple iPhone 15 Pro (128 GB)",
-    price: "1524.44",
+    name: "Boya ByM1 Auxiliary Omnidirectional Lavalier Condenser Microphone with 20ft Audio Cable (Black)",
+    price: "122.44",
     rating: 4.5,
-    description: "The iPhone 14 Pro features a 6.1-inch Super Retina XDR display, A16 Bionic chip, 5G capability, Pro camera system, and iOS 16. Available in multiple colors.",
+    description: "BOYA BY-M1 is an omni directional microphone, perfect for video,Designed for Smartphones, DSLR, Camcorders ,Audio recorders, PC etc.The microphone features an Omni pickup pattern, for full, 360-degreeusing the microphone: For Smartphone Switch off the microphone Slide the ON/OFF up to OFF/Smartphone",
     images: [
-      "https://m.media-amazon.com/images/I/41lQuD3zXhL._SY445_SX342_QL70_FMwebp_.jpg",
+      "https://m.media-amazon.com/images/I/311998jIRGL._SX300_SY300_QL70_FMwebp_.jpg",
       "https://m.media-amazon.com/images/I/51PpavHStIL._SX522_.jpg",
       "https://m.media-amazon.com/images/I/71lmRVkniLL._SX522_.jpg",
       "https://m.media-amazon.com/images/I/71g7dxYXiOL._SX522_.jpg"
@@ -60,7 +60,7 @@ const ProductDetails = () => {
           <TouchableOpacity onPress={() => router.back()}>
             <Text style={styles.backButton}>Back</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>{product.name}</Text>
+          {/* <Text style={styles.headerTitle}>{product.name}</Text> */}
         </View>
 
         {/* Product Card */}
@@ -111,7 +111,7 @@ const ProductDetails = () => {
           style={styles.similarProductsList}
         /> */}
       </ScrollView>
-      <TouchableOpacity onPress={()=>{setBotStatus(true)}} style={styles.chatbotLogo}>
+      {/* <TouchableOpacity onPress={()=>{setBotStatus(true)}} style={styles.chatbotLogo}>
           <LottieView
             loop
             autoPlay
@@ -123,7 +123,7 @@ const ProductDetails = () => {
             }}
             source={require('../../assets/chat-bot.json')}
         />
-  </TouchableOpacity>
+  </TouchableOpacity> */}
       {/* Footer */}
       <View style={styles.footerContainer}>
         <Footer2 setStatus={setStatus}/>
@@ -174,14 +174,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   imageCarousel: {
-    height: 300,
+    height: 260,
     borderRadius: 8,
     overflow: 'hidden',
   },
   productImage: {
-    width: 330,
-    height: 300,
-    resizeMode: 'cover',
+    width: 377,
+    height: 252,
+    resizeMode: 'contain',
   },
   productInfo: {
     padding: 16,

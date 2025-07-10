@@ -4,7 +4,7 @@ import { View, Text,TouchableOpacity,Image,Linking } from 'react-native'
 import styles from './footer.style'
 import { icons } from '../../../constants'
 import { useRouter } from 'expo-router'
-const Footer2 = ({setStatus}) => {
+const Footer2 = () => {
   const router=useRouter()
   return (
     <View style={styles.container}>
@@ -17,7 +17,7 @@ const Footer2 = ({setStatus}) => {
       </TouchableOpacity> */}
       <TouchableOpacity 
       style={styles.applyBtn}
-      onPress={()=>setStatus(true)}
+      onPress={()=>router.push('/Cart/cart')}
       >
       <Text style={styles.applyBtnText}>
         Add To Cart

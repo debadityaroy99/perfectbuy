@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet, TextInput } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useRouter } from 'expo-router';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([
     {
       id: '1',
-      name: 'Apple iPhone 15 Pro',
-      price: 1544.44,
+      name: 'Boya ByM1 Auxiliary Omnidirectional Lavalier Condenser Microphone with 20ft Audio Cable (Black)',
+      price: 122.44,
       quantity: 1,
-      image: 'https://m.media-amazon.com/images/I/41lQuD3zXhL._SY445_SX342_QL70_FMwebp_.jpg',
-    },
-    {
-      id: '2',
-      name: 'Samsung Galaxy S23',
-      price: 1012.32,
-      quantity: 2,
-      image: 'https://m.media-amazon.com/images/I/4193g0Lz6aL._SX300_SY300_QL70_FMwebp_.jpg',
+      image: 'https://m.media-amazon.com/images/I/311998jIRGL._SX300_SY300_QL70_FMwebp_.jpg',
     },
   ]);
+  const [promoCode, setPromoCode] = useState('');
+  const [discount, setDiscount] = useState(0);
   const router=useRouter()
 
   const removeItem = (id) => {
@@ -39,12 +35,22 @@ const CartPage = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
+  const applyPromo = () => {
+    if (promoCode.trim()) {
+      // Flat ₹20 discount demo
+      setDiscount(20);
+    }
+  };
+
+  const subtotal = parseFloat(calculateTotal());
+  const toPay = (subtotal - discount).toFixed(2);
+
   const renderItem = ({ item }) => (
     <View style={styles.cartItem}>
       <Image source={{ uri: item.image }} style={styles.productImage} />
       <View style={styles.productDetails}>
         <Text style={styles.productName}>{item.name}</Text>
-        <Text style={styles.productPrice}>${item.price}</Text>
+        <Text style={styles.productPrice}>₹{item.price}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity onPress={() => decreaseQuantity(item.id)} style={styles.quantityButton}>
             <Text style={styles.quantityButtonText}>-</Text>
@@ -62,7 +68,7 @@ const CartPage = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
@@ -79,14 +85,42 @@ const CartPage = () => {
         contentContainerStyle={styles.cartItemsList}
       />
 
-      {/* Total Price and Checkout Button */}
+      {/* Summary & Payment */}
       <View style={styles.footer}>
-        <Text style={styles.totalText}>Total: ${calculateTotal()}</Text>
-        <TouchableOpacity style={styles.checkoutButton} onPress={()=>{router.push('/Cart/checkOut')}}>
-          <Text style={styles.checkoutButtonText}>Checkout</Text>
+        <View style={styles.summaryRow}>
+          <Text style={styles.labelText}>Amount</Text>
+          <Text style={styles.valueText}>₹{subtotal}</Text>
+        </View>
+        <View style={styles.summaryRow}>
+          <Text style={styles.labelText}>Discount</Text>
+          <Text style={[styles.valueText, { color: '#d9534f' }]}>- ₹{discount}</Text>
+        </View>
+
+        {/* Promo code */}
+        <View style={styles.promoRow}>
+          <TextInput
+            placeholder="Promo code"
+            value={promoCode}
+            onChangeText={setPromoCode}
+            style={styles.promoInput}
+          />
+          <TouchableOpacity style={styles.applyBtn} onPress={applyPromo}>
+            <Text style={styles.applyBtnText}>✓</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={[styles.summaryRow, { marginTop: 4 }]}>
+          <Text style={styles.toPayLabel}>To pay</Text>
+          <Text style={styles.toPayValue}>₹{toPay}</Text>
+        </View>
+
+        <Text style={styles.pointsNote}>You will be awarded {Math.floor(toPay)} points for your purchase</Text>
+
+        <TouchableOpacity style={styles.checkoutButton} onPress={() => router.push('/Cart/checkOut')}>
+          <Text style={styles.checkoutButtonText}>Proceed to payment</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -99,18 +133,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
-    backgroundColor: 'white',
-    elevation: 5,
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    backgroundColor: '#0071ce',
+    elevation: 4,
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
   },
   backButton: {
     fontSize: 16,
-    color: '#007bff',
+    color: '#fff',
+    fontWeight:'bold'
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#fff',
   },
   cartItemsList: {
     paddingHorizontal: 16,
@@ -145,7 +183,7 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 16,
-    color: '#d9534f',
+    color: '#0071ce',
     marginVertical: 4,
   },
   quantityContainer: {
@@ -159,11 +197,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
-    backgroundColor: '#ddd',
+    backgroundColor: '#e0e7ff',
   },
   quantityButtonText: {
     fontSize: 18,
-    color: '#333',
+    color: '#0071ce',
   },
   quantity: {
     marginHorizontal: 10,
@@ -182,32 +220,87 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    padding: 16,
-    backgroundColor: 'white',
+    padding: 20,
+    backgroundColor: '#fff',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 10,
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 8,
   },
-  totalText: {
-    fontSize: 20,
+  summaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  labelText: {
+    fontSize: 16,
+    color: '#666',
+  },
+  valueText: {
+    fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
   },
+  promoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 8,
+  },
+  promoInput: {
+    flex: 1,
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    fontSize: 14,
+    backgroundColor: '#f5f7fa',
+  },
+  applyBtn: {
+    marginLeft: 8,
+    backgroundColor: '#00a3ff',
+    width: 48,
+    height: 40,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  applyBtnText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  toPayLabel: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  toPayValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  pointsNote: {
+    fontSize: 12,
+    color: '#777',
+    marginTop: 8,
+  },
   checkoutButton: {
     marginTop: 16,
-    paddingVertical: 12,
-    backgroundColor: '#007bff',
+    paddingVertical: 14,
+    backgroundColor: '#0071ce',
     borderRadius: 8,
     alignItems: 'center',
   },
   checkoutButtonText: {
     fontSize: 18,
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
+    letterSpacing: 0.5,
   },
 });
 

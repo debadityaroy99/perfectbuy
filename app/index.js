@@ -1,72 +1,103 @@
-import { View, Text, FlatList, SafeAreaView, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
-import { Stack, useRouter } from "expo-router";
-import { COLORS, SIZES } from "../constants/theme";
-import { icons, images } from "../constants";
-import { Image } from "react-native";
-import styles from "./signup/signupStyle";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import { Stack } from "expo-router";
 import SplashScreen from "../components/common/splashScreen";
-import CustomInput from "./signup/customInput";
 import Button from "./signup/button";
-import Forgot from "./signup/forgot";
+import { COLORS } from "../constants/theme";
+
 const SignUp = () => {
-  const router = useRouter();
-  const [isShowSplash,setIsShowSplash]=useState(false)
-  // Prepare data for FlatList, you can use an array with each section of content
-  const [username,setUsername]=useState("")
-  const [password,setPassword]=useState("")
-// useEffect(()=>{
-//     setTimeout(()=>{
-//         setIsShowSplash(false)
-//     },3000)
-// })
+  const [isShowSplash, setIsShowSplash] = useState(true);
+  const [email, setEmail] = useState("");
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setIsShowSplash(false);
+    }, 3000);
+  });
 
-      <View style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-    {isShowSplash?<SplashScreen/>:
-    <View >
+  return isShowSplash ? (
+    <SplashScreen />
+  ) : (
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <Stack.Screen options={{ headerShown: false }} />
 
-    <View style={styles.container}>
-      <Stack.Screen
-      options={{
-        headerShown:true,
-        headerShadowVisible:false,
-        headerStyle:{backgroundColor:COLORS.lightWhite},
-        headerTitle:"",
-      }}
-      />
+      {/* Top-left blue circle */}
+      <View style={styles.blueCircle} />
 
-      <SafeAreaView style={{marginTop:320}}>
-        <Image
-        source={images.logo
-        }
-        style={styles.logo}
-        resizeMode='contain'
+      {/* Login form */}
+      <View style={{ paddingHorizontal: 24, marginTop: 290 }}>
+        <Text style={styles.title}>Login</Text>
+        <Text style={styles.subtitle}>Good to see you back!</Text>
+
+        <TextInput
+          placeholder="Email"
+          placeholderTextColor="#999"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
         />
-        <Text style={{alignSelf:'center',marginTop:-70,marginBottom:0,fontSize: 18, fontWeight: 'bold',color: '#333'}}>
-          ShopSync
-        </Text>
-        <View style={{marginBottom:190}}>
-        <CustomInput placeholder={'Phone Number'} value={username} setValue={setUsername} secureTextEntry={false}/>
-        <CustomInput placeholder={'password'} value={password} setValue={setPassword} secureTextEntry={true}/>
-        </View>
-       <View style={{padding:10,zIndex:1}}>
-       <Forgot></Forgot>
-       </View>
-        <Button text={"Login"} bgColor={'#0867c7'} fgColor={'white'}></Button>
-        <View style={{marginTop:30}}>
-        <Button text={"Login with google"} bgColor={'#FAE9EA'} fgColor={'#DD4D44'}></Button>
-        <Button text={"Login with facebook"} bgColor={'#E7EAF4'} fgColor={'#4765A9'}></Button>
-        <Button text={"Login with apple"} bgColor={'#e3e3e3'} fgColor={'#363636'}></Button>
-        </View>
 
-      </SafeAreaView>
-    </View>
-    </View>}
-    </View>
+        <Button text="Next" bgColor="#0066FF" fgColor="#fff" borderRadius={24}/>
 
+        <TouchableOpacity style={{ alignSelf: "center", marginTop: 16 }}>
+          <Text style={styles.cancelText}>Cancel</Text>
+        </TouchableOpacity>     
+      </View>
+      <View style={styles.grayCircle} />
+    </View>
   );
 };
 
 export default SignUp;
+
+const styles = StyleSheet.create({
+  blueCircle: {
+    position: "absolute",
+    top: -80,
+    left: -80,
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    backgroundColor: "#0066FF",
+  },
+  grayCircle: {
+    
+    bottom: -90,
+    right: -190,
+    width:300,
+    height:300,
+    borderRadius: 250,
+    backgroundColor: "#a6aba7",
+    opacity: 0.5
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
+    color: "#000",
+  },
+  subtitle: {
+    fontSize: 19,
+    color: "#555",
+    marginTop: 8,
+    marginBottom: 32,
+  },
+  input: {
+    width: "100%",
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "#F5F5F5",
+    paddingHorizontal: 20,
+    marginBottom: 24,
+    fontSize: 16,
+  },
+  cancelText: {
+    fontSize: 14,
+    color: "#666",
+  },
+});

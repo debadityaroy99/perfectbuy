@@ -4,16 +4,13 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    bottom:0,
+    bottom:10,
     left: 0,
     right: 0,
     padding: SIZES.small,
     backgroundColor: "transparent",
     justifyContent: "space-between",
     alignItems: "center",
-    flexDirection: "row",
-    zIndex:1
   },
   likeBtn: {
     width: 55,
@@ -32,7 +29,10 @@ const styles = StyleSheet.create({
   applyBtn: {
     flex: 1,
     backgroundColor: "#0071ce",
-    height: "100%",
+    marginTop: SIZES.medium,
+    marginBottom: -17,
+    height: "50%",
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
     marginLeft: SIZES.medium,

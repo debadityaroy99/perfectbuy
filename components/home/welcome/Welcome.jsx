@@ -3,18 +3,26 @@ import { View, Text, TextInput, Image, TouchableOpacity, FlatList } from 'react-
 import { useRouter } from 'expo-router';
 import styles from './welcome.style';
 import { icons, SIZES, COLORS, SHADOWS, FONT } from '../../../constants';
+import Footer from "../../jobdetails/footer/Footer";
+import { Ionicons } from '@expo/vector-icons';
 
-const jobTypes = ["Grocery", "Clothing", "Electronics", "Baby-care"];
+const categories = [
+  { label: 'Fashion', icon: 'shirt-outline' },
+  { label: 'Fitness', icon: 'barbell-outline' },
+  { label: 'Living', icon: 'tv-outline' },
+  { label: 'Games', icon: 'game-controller-outline' },
+  { label: 'Stationery', icon: 'pencil-outline' },
+];
 
 const Welcome = ({ searchTerm, setsearchTerm, handleClick }) => {
   const router = useRouter();
-  const [activeJobType, setActiveJobType] = useState("Full-Time");
+  const [activeCat, setActiveCat] = useState('');
 
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello Debaditya</Text>
-        <Text style={styles.welcomeMessage}>What are you shopping today?</Text>
+        <Text style={styles.welcomeMessage}>Hello Tushar</Text>
+        {/* <Text style={styles.welcomeMessage}>What are you shopping today?</Text> */}
 
         <View style={styles.searchContainer}>
           <View style={styles.searchWrapper}>
@@ -33,35 +41,45 @@ const Welcome = ({ searchTerm, setsearchTerm, handleClick }) => {
             />
           </TouchableOpacity>
         </View>
-
-        <View style={styles.tabContainer}>
-          <FlatList 
-            data={jobTypes}
+        <View style={{marginTop:10,marginLeft:5}}>
+                <Text style={{fontSize:16,fontWeight:'bold'}}>Categories</Text>
+        </View>
+        <View style={{ marginTop: 15 ,marginLeft:10}}>
+          <FlatList
+            data={categories}
+            horizontal
+            keyExtractor={(item) => item.label}
+            contentContainerStyle={{ columnGap: 16 }}
+            showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => (
-              <TouchableOpacity 
-                style={[
-                  styles.tab(activeJobType, item), 
-                  { 
-                    ...SHADOWS.medium, // Apply the shadow
-                    shadowColor: COLORS.darkGray, // Customize shadow color
-                    shadowOpacity: 0.3, // Customize shadow opacity
-                  }
-                ]}
-                onPress={() => {
-                  setActiveJobType(item);
-                  // router.push(`/search/${item}`);
-                }}
+              <TouchableOpacity
+                style={{ alignItems: 'center' }}
+                onPress={() => setActiveCat(item.label)}
               >
-                <Text style={{ color: 'black', fontWeight: FONT.medium }}>{item}</Text>
+                <View
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 12,
+                    backgroundColor: '#ffffff',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderWidth: activeCat === item.label ? 2 : 0,
+                    borderColor: '#0066FF',
+                  }}
+                >
+                  <Ionicons
+                    name={item.icon}
+                    size={24}
+                    color={activeCat === item.label ? '#0066FF' : '#4F4F4F'}
+                  />
+                </View>
+                <Text style={{ marginTop: 6, fontSize: 12, color: '#333' }}>{item.label}</Text>
               </TouchableOpacity>
             )}
-            keyExtractor={item => item}
-            contentContainerStyle={{ columnGap: SIZES.large }}
-            horizontal
-            style={{ marginTop: 13 }}
-            showsHorizontalScrollIndicator={false}
           />
         </View>
+        <Footer />
       </View>
     </View>
   );

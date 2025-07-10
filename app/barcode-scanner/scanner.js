@@ -30,6 +30,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      {/* Top Nav Bar */}
+      <View style={styles.topBar} pointerEvents="none">
+        <Text style={styles.topBarText}>Hello Tushar, Scan your purchase</Text>
+      </View>
       <CameraView
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
         barcodeScannerSettings={{
@@ -37,6 +41,9 @@ export default function App() {
         }}
         style={StyleSheet.absoluteFillObject}
       />
+      <View style={styles.overlayCenter} pointerEvents="none">
+        <Text style={styles.instruction}>Point towards the QR of the Walmart store product</Text>
+      </View>
       {scanned && (
         <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
       )}
@@ -49,5 +56,40 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
+  },
+  overlayCenter: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  instruction: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  topBar: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    paddingTop: 50,
+    paddingBottom: 12,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    alignItems: 'center',
+    zIndex: 2,
+  },
+  topBarText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

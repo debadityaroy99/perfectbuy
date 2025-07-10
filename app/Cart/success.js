@@ -17,15 +17,17 @@ const TransactionComplete = () => {
   }, []);
 
   const billItems = [
-    { id: '1', description: 'Apple iPhone 14 Pro', price: '$999' },
-    { id: '2', description: 'Apple AirPods Pro', price: '$249' },
-    { id: '3', description: 'Shipping', price: '$20' },
+    { id: '1', description: 'Boya ByM1 Auxiliary  Microphone', price: 120.44 },
   ];
+
+  const subtotal = 120.44;
+  const tax = 2.0; // US market taxes
+  const total = 122.44;
 
   const renderBillItem = ({ item }) => (
     <View style={styles.billItem}>
       <Text style={styles.billDescription}>{item.description}</Text>
-      <Text style={styles.billPrice}>{item.price}</Text>
+      <Text style={styles.billPrice}>${item.price.toFixed(2)}</Text>
     </View>
   );
 
@@ -33,7 +35,7 @@ const TransactionComplete = () => {
     return (
       <View style={styles.animationContainer}>
         <LottieView
-          source={require('../../assets/success.json')}
+          source={require('../../assets/success1.json')}
           autoPlay
           loop={false}
           onAnimationFinish={() => setAnimationCompleted(true)}
@@ -45,49 +47,50 @@ const TransactionComplete = () => {
 
   return (
     <View style={styles.container}>
+      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <FontAwesome name="arrow-left" size={21} color="black" />
+          <FontAwesome name="arrow-left" size={20} color="#fff" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Transaction Complete</Text>
+        <Text style={styles.headerTitle}>Receipt</Text>
+        {/* empty view to balance flex and keep title centered */}
+        <View style={{ width: 20 }} />
       </View>
 
+      {/* Receipt Card */}
       <View style={styles.card}>
-        <View style={styles.iconSection}>
-          <FontAwesome name="shopping-cart" size={50} color="#007bff" />
-          <Text style={styles.storeName}>Kurnool Store</Text>
-          <Text style={styles.storeLocation}>15 Aug, 2024  | 09:30</Text>
-        </View>
-        <View style={{marginBottom:20,flexDirection:'row'}}>
-            <Text style={{fontSize:22,fontWeight:600}}>Total Payment</Text>
-            <Text style={{fontSize:22,fontWeight:600,left:120}}>$2797</Text>
-            </View>
+        <Text style={styles.storeName}>Walmart Store</Text>
+        <Text style={styles.storeLocation}>12 July 2025 | 09:30</Text>
+
         <FlatList
           data={billItems}
           renderItem={renderBillItem}
           keyExtractor={(item) => item.id}
           style={styles.billList}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
-        <View style={{alignSelf:'center',flexDirection:'row'}}>
-            <FontAwesome name="barcode" size={100} color="black" />
-            <FontAwesome name="barcode" size={100} color="black" />
-           
-        </View>
-        <Text style={{alignSelf:'center',fontWeight:600,fontSize:20}}>THANK YOU!</Text>
 
+        <View style={styles.separator} />
+
+        <View style={styles.summaryRow}>
+          <Text style={styles.labelText}>Subtotal</Text>
+          <Text style={styles.valueText}>${subtotal.toFixed(2)}</Text>
+        </View>
+        <View style={styles.summaryRow}>
+          <Text style={styles.labelText}>Tax</Text>
+          <Text style={styles.valueText}>${tax.toFixed(2)}</Text>
+        </View>
+        <View style={styles.summaryRow}>
+          <Text style={[styles.labelText, { fontWeight: '700' }]}>Total</Text>
+          <Text style={[styles.valueText, { fontWeight: '700' }]}>${total.toFixed(2)}</Text>
+        </View>
+
+        <Text style={styles.thankYou}>Thank you for shopping!</Text>
       </View>
-      <TouchableOpacity style={styles.downloadButton}>
-          <Text style={styles.downloadButtonText}>Download Bill</Text>
-        </TouchableOpacity>
 
-        <Text style={styles.ratingTitle}>Rate Our Service</Text>
-        <View style={styles.starRating}>
-          {[...Array(5)].map((_, index) => (
-            <TouchableOpacity key={index}>
-              <FontAwesome name="star" size={32} color="gold" />
-            </TouchableOpacity>
-          ))}
-        </View>
+      <TouchableOpacity style={styles.downloadButton}>
+        <Text style={styles.downloadButtonText}>Download Receipt</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -111,13 +114,20 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    backgroundColor: '#0071ce',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
     marginBottom: 20,
-    marginTop: 30,
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: '480',
-    marginLeft: 20,
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#fff',
+    textAlign: 'center',
+    flex: 1,
   },
   card: {
     backgroundColor: 'white',
@@ -130,21 +140,16 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginTop:22
   },
-  iconSection: {
-    alignItems: 'center',
-    marginBottom: 40,
-  },
   storeName: {
-    fontSize: 20,
-    fontWeight: '600',
-    marginTop: 6,
-    marginBottom: 7,
+    fontSize: 18,
+    fontWeight: '700',
+    textAlign: 'center',
   },
   storeLocation: {
-    fontSize: 14,
-    fontWeight: '590',
+    fontSize: 12,
     color: 'gray',
-    top:-7
+    textAlign: 'center',
+    marginBottom: 12,
   },
   billList: {
     marginBottom: 20,
@@ -152,21 +157,27 @@ const styles = StyleSheet.create({
   billItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
+    paddingVertical: 6,
   },
-  billDescription: {
-    fontSize: 16,
+  separator: {
+    height: 1,
+    backgroundColor: '#eaeaea',
+  },
+  summaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 6,
+  },
+  labelText: {
+    fontSize: 14,
+    color: '#555',
+  },
+  valueText: {
+    fontSize: 14,
+    color: '#000',
   },
   billPrice: {
-    fontSize: 16
+    fontSize: 14,
   },
   downloadButton: {
     backgroundColor: '#007bff',
@@ -181,14 +192,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  ratingTitle: {
-    fontSize: 18,
-    marginBottom: 10,
+  thankYou: {
     textAlign: 'center',
-  },
-  starRating: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    marginTop: 12,
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

@@ -4,7 +4,6 @@ import { Stack, useRouter } from "expo-router";
 import { COLORS, SIZES } from "../constants/theme";
 import { icons, images } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components";
-import { LinearGradient } from 'expo-linear-gradient';
 import Footer from "../components/jobdetails/footer/Footer";
 import { Image } from "react-native";
 const Home = () => {
@@ -30,11 +29,12 @@ const Home = () => {
   ];
 
   return (
-    <LinearGradient colors={['#0071ce', '#fef4fa','#fff9fd','#ffffff']} style={{ height: "100%",flex:1 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      
         <Stack.Screen
         options={{
           headerShown:true,   
-          headerStyle: { backgroundColor: COLORS.lightWhite },
+          headerStyle: { backgroundColor: "#fff"},
           headerShadowVisible: false,
           headerLeft: () => (
             <ScreenHeaderBtn iconUrl={icons.menu} dimension="100%" />
@@ -44,22 +44,21 @@ const Home = () => {
                 <View><Text style={{
                     fontWeight:700,
                     fontSize:20,
-                    color:'white',
                     marginRight:17,
                     marginTop:4
-                }}>Kurnool</Text>
+                }}></Text>
                       {/* <View style={{}}>
                       <Image source={{uri:icons.location}} style={{ width: 24,
                   height: 24,marginRight:20}}/>
                       </View> */}
                 </View>
 
-              <ScreenHeaderBtn iconUrl={icons.cart} />
+              <ScreenHeaderBtn iconUrl={icons.cart}/>
               
             </View>
           ),
           headerTitle: "",
-          headerStyle:{backgroundColor:'#0071ce'}
+          headerStyle:{backgroundColor:'#fff'}
         }}
       />
       
@@ -76,8 +75,8 @@ const Home = () => {
         //   </View>
         // }
       />
-      <Footer  />
-    </LinearGradient>
+      {/* <Footer  /> */}
+    </View>
   );
 };
 

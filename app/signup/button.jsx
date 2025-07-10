@@ -12,7 +12,7 @@ function Button({text,onpress,bgColor,fgColor}) {
             setLoading(false)
         },1000)
         setTimeout(()=>{
-        router.push('/loginSuccess')
+        router.push('/password')
         },1000)
     }
   return (
@@ -36,7 +36,8 @@ const styles=StyleSheet.create({
         marginLeft: SIZES.medium,
         justifyContent: "center",
         alignItems: "center",
-        marginTop:20
+        marginTop:20,
+        borderRadius:20,
         },
       applyBtnText:{
         fontSize:20,color:"white",fontWeight:'bold'}

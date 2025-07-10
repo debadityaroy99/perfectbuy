@@ -4,24 +4,22 @@ import { useNavigation } from '@react-navigation/native';
 import Footer from '../../components/jobdetails/footer/Footer';
 import Sheet from '../bottom-sheet/sheet';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
 const ProductDetails = () => {
     const [status, setStatus] = useState(false);
     const navigation = useNavigation(); // Use navigation from React Navigation
     const router=useRouter()
     const product = {
-        name: "Apple iPhone 15 Pro (128 GB)",
-        price: "1524.44",
+        name: "Fortune Hamesha Mini Dubar Basmati Rice, suitable for daily cooking, 5 Kg",
+        price: "26.90",
         rating: 4.5,
-        description: "The iPhone 14 Pro features a 6.1-inch Super Retina XDR display, A16 Bionic chip, 5G capability, Pro camera system, and iOS 16. Available in multiple colors.",
+        description: "The iPhone 15 Pro features a 6.1-inch Super Retina XDR display, A16 Bionic chip, 5G capability, Pro camera system, and iOS 16. Available in multiple colors.",
         images: [
-            "https://m.media-amazon.com/images/I/41lQuD3zXhL._SY445_SX342_QL70_FMwebp_.jpg",
-            "https://m.media-amazon.com/images/I/51PpavHStIL._SX522_.jpg",
-            "https://m.media-amazon.com/images/I/71lmRVkniLL._SX522_.jpg",
-            "https://m.media-amazon.com/images/I/71g7dxYXiOL._SX522_.jpg"
+            "https://m.media-amazon.com/images/I/718jTNHNlCL._AC_UL480_FMwebp_QL65_.jpg"
         ],
         location: "Aisle 5, Shelf 2, Near the Electronics section",
-        reviews: [
+        reviews: [,
             "The best iPhone yet! The camera is incredible, and the display is gorgeous.",
             "Pricey, but worth it for the features and build quality.",
             "Battery life could be better, but overall a great phone.",
@@ -50,7 +48,7 @@ const ProductDetails = () => {
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Text style={styles.backButton}>Back</Text>
                     </TouchableOpacity>
-                    <Text style={styles.headerTitle}>{product.name}</Text>
+                    
                 </View>
 
                 {/* Product Card */}
@@ -77,35 +75,20 @@ const ProductDetails = () => {
 
                     {/* Product Location in Store */}
                     <View style={styles.locationCard}>
-                        <Text style={styles.locationTitle}>Available in Store:</Text>
+                        <View style={styles.locationHeader}>
+                            <Ionicons name="location-outline" size={18} color="#0071ce" style={{ marginRight: 6 }} />
+                            <Text style={styles.locationTitle}>Location in Store</Text>
+                        </View>
                         <Text style={styles.locationDescription}>{product.location}</Text>
                     </View>
                 </View>
 
-                <View style={{  marginRight: 20 }}>
-                    <View style={{flexDirection:'row',marginTop:50}}>
-                        <TouchableOpacity
-                            style={styles.helpButton}
-                            onPress={() => setStatus(true)}
-                        >
-                            <View style={styles.helpButtonTextWrapper}>
-                                <Text style={styles.helpButtonText}>Store Map</Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={styles.helpButton2}
-                            onPress={() => router.push('/help')}
-                        >
-                            <View style={styles.helpButtonTextWrapper}>
-                                <Text style={styles.helpButtonText}>Need Help?</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                   
-                    <View style={{marginTop:130}}><Footer /></View>
+                <View style={{ marginTop: 20, marginHorizontal: 20 }}>
+                    <Footer />
                 </View>
+               
             </ScrollView>
-            {status && <Sheet onClose={() => setStatus(false)} />}
+            
         </View>
     );
 };
@@ -150,9 +133,9 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     productImage: {
-        width: 330,
-        height: 300,
-        resizeMode: 'cover',
+        width: 360,
+        height: 286,
+        resizeMode: 'contain',
     },
     productInfo: {
         padding: 16,
@@ -171,64 +154,34 @@ const styles = StyleSheet.create({
         color: '#d9534f',
     },
     locationCard: {
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        padding: 15,
-        marginBottom: 7,
+        backgroundColor: '#eaf4ff',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: '#0071ce',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 3,
+        shadowOpacity: 0.15,
+        shadowRadius: 4,
+        elevation: 4,
+    },
+    locationHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 8,
     },
     locationTitle: {
         fontSize: 16,
         fontWeight: 'bold',
-        marginBottom: 5,
+        color: '#0071ce',
     },
     locationDescription: {
-        fontSize: 17,
-        color: '#666',
-        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#333',
+        fontWeight: '500',
     },
-    helpButton: {
-        alignSelf: 'flex-end',
-        marginTop: -190,
-        left:20,
-        backgroundColor: '#0071ce',
-        width: '26%',
-        height: 33,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 4, height: 3 },
-        shadowOpacity: 0.8,
-        shadowRadius: 17,
-        elevation: 10,
-        top:10
-    },
-    helpButton2: {
-        alignSelf: 'flex-end',
-        marginTop: -190,
-        left:190,
-        backgroundColor: '#0071ce',
-        width: '26%',
-        height: 33,
-        borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 4, height: 3 },
-        shadowOpacity: 0.8,
-        shadowRadius: 17,
-        elevation: 10,
-        top:10
-    },
-    helpButtonTextWrapper: {
-        alignSelf: 'center',
-        marginTop: 6,
-    },
-    helpButtonText: {
-        color: 'white',
-        fontWeight: 'bold',
-    },
+    /* Removed helpButton and helpButton2 styles as buttons were deleted */
 });
 
 export default ProductDetails;

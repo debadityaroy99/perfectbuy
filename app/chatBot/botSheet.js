@@ -65,7 +65,7 @@ const Sheet = ({ onClose }) => {
                     )}
                                         {showResponse && (
                         <View style={[styles.messageCard,styles.responseCard]}>
-                            <Text style={styles.messageText}>The iPhone 14 Pro has a 6.1-inch Super Retina XDR display with a resolution of 2556 x 1179 pixels.</Text>
+                            <Text style={styles.messageText}>The iPhone 15 Pro has a 6.1-inch Super Retina XDR display with a resolution of 2556 x 1179 pixels.</Text>
                             <Text style={styles.timestamp}>{responseTime}</Text>
                         </View>
                     )}
@@ -85,7 +85,7 @@ const Sheet = ({ onClose }) => {
 
                     <View style={styles.buttonContainer}>
                         <TextInput
-                            placeholder="Ask questions about Apple Iphone 14 Pro"
+                            placeholder="Ask questions about Apple Iphone 15 Pro"
                             value={value}
                             onChangeText={setValue}
                             style={styles.input}
